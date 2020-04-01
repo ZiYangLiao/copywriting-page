@@ -39,11 +39,15 @@
             
             <el-input style="width: 400px"/>
             <el-button round>搜索</el-button>
-            <el-form-item>
-              <el-select v-model="form.knowledge" clearable multiple filterable allow-create default-first-option placeholder="请选择标签">
-                <el-option v-for="item in knowledge" :key="item.value" :label="item.label" :value="item.label"></el-option>
-              </el-select>
-            </el-form-item>
+            <el-row style="top: 10px;right: 92px;">
+              <el-button type="text">ALL</el-button>
+              <el-button type="text">生活</el-button>
+              <el-button type="text">伤感</el-button>
+              <el-button type="text">愉悦</el-button>
+              <el-button type="text">励志</el-button>
+              <el-button type="text">思念</el-button>
+              <el-button type="text">工作</el-button>
+            </el-row>
           </el-form>
           <el-button style="text-align: : right" type="success" plain>添加文案</el-button>
         </div>
