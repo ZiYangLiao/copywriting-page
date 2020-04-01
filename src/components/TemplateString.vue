@@ -27,25 +27,25 @@
 <!--    </el-aside>-->
 
     <el-container>
-      <el-header style="background-color:#409EFF;text-align: right; font-size: 16px">
+      <el-header style="background-color:#FFDEAD;text-align: center; font-size: 16px">
 <!--        <img src="../assets/qqqq.png"/>-->
-        <span><i class="el-icon-user-solid"></i>管理员</span>
+        <span><i class="el-icon-user-solid"></i>文案•生活</span>
       </el-header>
       <el-main>
 
 
         <div align="right">
-          <el-form ref="form" :model="form">
+          <el-form ref="form" :model="form" style="text-align: center;">
+            
+            <el-input style="width: 400px"/>
+            <el-button round>搜索</el-button>
             <el-form-item>
               <el-select v-model="form.knowledge" clearable multiple filterable allow-create default-first-option placeholder="请选择标签">
                 <el-option v-for="item in knowledge" :key="item.value" :label="item.label" :value="item.label"></el-option>
               </el-select>
             </el-form-item>
-            <el-button round>搜索</el-button>
           </el-form>
           <el-button style="text-align: : right" type="success" plain>添加文案</el-button>
-          <el-button style="text-align: right" type="warning" plain>修改文案</el-button>
-          <el-button style="text-align: right" type="danger" plain>删除文案</el-button>
         </div>
 
       </el-main>
