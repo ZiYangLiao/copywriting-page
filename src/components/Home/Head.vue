@@ -22,10 +22,10 @@
         />
         <button class="btn createBtn">新建</button>
       </div>
-      <!-- <button class="btn changeThemeBtn" @click="changeTheme">
-			<template v-if="theme === 'light'">切换到暗黑模式</template>
-			<template v-else>切换到明亮模式</template>
-      </button>-->
+      <button class="btn changeThemeBtn" @click="changeTheme">
+        <span class="iconfont iconDark" v-if="theme === 'light'"></span>
+        <span class="iconfont iconLight" v-else></span>
+      </button>
     </div>
   </div>
 </template>
@@ -101,10 +101,26 @@ export default {
   &.theme-light {
     background: rgba(255, 255, 255, 1);
     box-shadow: 0rem 0.02rem 0.06rem 0rem rgba(0, 0, 0, 0.1);
+    .iconfont {
+      color: #110f24;
+    }
+    .changeThemeBtn {
+      .iconfont {
+        color: #a5a5ad;
+      }
+    }
   }
   &.theme-dark {
     background: rgba(30, 30, 30, 0.85);
     box-shadow: 0rem 0.02rem 0.06rem 0rem rgba(0, 0, 0, 0.1);
+    .iconfont {
+      color: #a5a5ad;
+    }
+    .changeThemeBtn {
+      .iconfont {
+        color: #a5a5ad;
+      }
+    }
   }
   .headerBox {
     margin-left: 2rem;
@@ -115,14 +131,16 @@ export default {
     align-items: center;
     position: relative;
     .changeThemeBtn {
+      width: 1rem;
+      background-color: transparent;
+      border: 1px solid #e1e1e1;
       position: absolute;
       right: 0;
-      transform: translateX(100%);
+      transform: translateX(105%);
     }
     .logoBox {
       width: 4.48rem;
       height: 100%;
-      background: coral;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -131,7 +149,6 @@ export default {
       width: auto;
       height: 100%;
       min-width: 3.5rem;
-      background: coral;
       display: flex;
       justify-content: space-between;
       align-items: center;

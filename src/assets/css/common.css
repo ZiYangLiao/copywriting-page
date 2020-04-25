@@ -19,13 +19,14 @@ body {
 }
 
 .btn {
-    min-width: 2.1rem;
+    min-width: 1.8rem;
     height: 0.76rem;
     border-radius: 0.12rem;
     outline: none;
     border: none;
     background-color: white;
     color: black;
+    padding: 0;
 }
 
 .input {
