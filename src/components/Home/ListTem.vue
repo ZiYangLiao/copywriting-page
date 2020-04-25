@@ -7,7 +7,6 @@
             class="cardItem"
             v-for="(item,index) in list"
             :key="index"
-            @click="cardItemClickFun(index)"
           >
             <img src="https://zt.msstatic.com/zt/img/20/02/04/158078263814850075485.jpg" alt />
             <div class="cardBox">
@@ -22,7 +21,7 @@
     </div>
 
     <!-- 弹窗容器 -->
-    <div class="shadow-cont" @click="closeShadowContFun" v-show="isShowShadowCont">
+    <div class="shadow-cont" @click="closeCreateCardFun" v-show="isShowShadowCont">
       <div class="shadowBox" @click.stop :class="{'rubberBand':isShowShadowCont}">
         <img src="https://zt.msstatic.com/zt/img/20/02/04/158078263814850075485.jpg" alt />
         <div class="cardBox">
@@ -32,6 +31,7 @@
           </div>
         </div>
       </div>
+      <div class="handleBtnBox"></div>
     </div>
   </div>
 </template>
@@ -39,15 +39,26 @@
 <script>
 import BScroll from "better-scroll"; //better scroll
 export default {
+  props: {
+    isShowShadowCont: {
+      //是否展示弹窗
+      type: Boolean,
+      default: false
+    },
+    closeCreateCardFun: {
+      type: Function,
+      required: true
+    }
+  },
   data() {
     return {
       pageNum: 1,
       isGetState: false, //是否加载数据中
-      isShowShadowCont: false, //是否展示弹窗
+      //   isShowShadowCont: false, //是否展示弹窗
       currentItem: {
         id: 1,
-        text: "你自己觉得有，别人感觉不到你有，你就是没有",
-        tick: { text: ["爱好"], color: "#F7B500" }
+        text: "",
+        tick: { text: [], color: "#F7B500" }
       },
       list: [
         {
@@ -171,14 +182,14 @@ export default {
     cardItemClickFun(i) {
       console.log(i);
       this.currentItem = this.list[i];
-      this.showShadowContFun();
+      //   this.showShadowContFun();
     },
     showShadowContFun() {
       this.isShowShadowCont = true;
-    },
-    closeShadowContFun() {
-      this.isShowShadowCont = false;
     }
+    // closeShadowContFun() {
+    //   this.isShowShadowCont = false;
+    // }
   }
 };
 </script>
@@ -198,12 +209,14 @@ export default {
   z-index: 1;
   .cardList {
     width: 100%;
+    padding: 0 0.3rem;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     .cardItem {
-      width: 5.82rem;
-      height: 3.92rem;
+      width: 5rem;
+      height: 3.6rem;
       border-radius: 0.16rem;
       background: chartreuse;
       margin-top: 0.48rem;

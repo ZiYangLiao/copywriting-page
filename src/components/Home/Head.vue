@@ -5,9 +5,7 @@
         <div class="logo"></div>
       </div>
       <div class="handleBox">
-        <span class="searchBtn" @click="showSearchInputFun">
-          <span class="iconfont iconSearch"></span>
-        </span>
+        
         <input
           type="text"
           class="input searchInput"
@@ -20,7 +18,10 @@
           maxlength="16"
           placeholder="请输入搜索内容"
         />
-        <button class="btn createBtn">新建</button>
+        <span class="searchBtn" @click="showSearchInputFun">
+          <span class="iconfont iconSearch"></span>
+        </span>
+        <button class="btn createBtn" @click.stop="createCardFun">新建</button>
       </div>
       <button class="btn changeThemeBtn" @click="changeTheme">
         <span class="iconfont iconDark" v-if="theme === 'light'"></span>
@@ -37,6 +38,10 @@ export default {
     theme: {
       type: String,
       default: "light"
+    },
+    createCardFun:{
+        type:Function,
+        required: true,
     }
   },
   computed: {
@@ -157,6 +162,7 @@ export default {
         height: 0.76rem;
         display: flex;
         align-items: center;
+        cursor: pointer;
         .iconfont {
           font-size: 0.44rem;
         }

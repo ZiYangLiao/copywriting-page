@@ -14,52 +14,54 @@
         <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
             Please enable it to continue.</strong>
     </noscript>
+    <script>
+        !(function (designWidth, maxWidth) {
+            var tid, rootItem, rootStyle;
+            function refreshRem() {
+                var width = document.documentElement.getBoundingClientRect().width;
+                if (!maxWidth) {
+                    maxWidth = 750;
+                }
+                if (width > maxWidth) {
+                    width = maxWidth;
+                }
+                var rem = width * 100 / designWidth;
+                rootStyle = "html{font-size:" + rem + 'px !important}';
+                rootItem = document.getElementById('rootsize') || document.createElement("style");
+                if (!document.getElementById('rootsize')) {
+                    document.getElementsByTagName("head")[0].appendChild(rootItem);
+                    rootItem.id = 'rootsize';
+                }
+                if (rootItem.styleSheet) {
+                    rootItem.styleSheet.disabled || (rootItem.styleSheet.cssText = rootStyle)
+                } else {
+                    try {
+                        rootItem.innerHTML = rootStyle
+                    } catch (f) {
+                        rootItem.innerText = rootStyle
+                    }
+                }
+                document.documentElement.style.fontSize = rem + "px";
+                console.log(rem)
+            }
+            refreshRem();
+    
+            window.addEventListener("resize", function () {
+                clearTimeout(tid);
+                console.log('resize')
+                tid = setTimeout(refreshRem, 300);
+            }, false);
+    
+            window.addEventListener("pageshow", function (e) {
+                if (e.persisted) {
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }
+            }, false);
+        })(1920, 1080);
+    </script>
     <div id="app"></div>
     <!-- built files will be auto injected -->
 </body>
 
 </html>
-<script>
-    !(function (designWidth, maxWidth) {
-        var tid, rootItem, rootStyle;
-        function refreshRem() {
-            var width = document.documentElement.getBoundingClientRect().width;
-            if (!maxWidth) {
-                maxWidth = 750;
-            }
-            if (width > maxWidth) {
-                width = maxWidth;
-            }
-            var rem = width * 100 / designWidth;
-            rootStyle = "html{font-size:" + rem + 'px !important}';
-            rootItem = document.getElementById('rootsize') || document.createElement("style");
-            if (!document.getElementById('rootsize')) {
-                document.getElementsByTagName("head")[0].appendChild(rootItem);
-                rootItem.id = 'rootsize';
-            }
-            if (rootItem.styleSheet) {
-                rootItem.styleSheet.disabled || (rootItem.styleSheet.cssText = rootStyle)
-            } else {
-                try {
-                    rootItem.innerHTML = rootStyle
-                } catch (f) {
-                    rootItem.innerText = rootStyle
-                }
-            }
-            document.documentElement.style.fontSize = rem + "px";
-        }
-        refreshRem();
-
-        window.addEventListener("resize", function () {
-            clearTimeout(tid);
-            tid = setTimeout(refreshRem, 300);
-        }, false);
-
-        window.addEventListener("pageshow", function (e) {
-            if (e.persisted) {
-                clearTimeout(tid);
-                tid = setTimeout(refreshRem, 300);
-            }
-        }, false);
-    })(750, 375);
-</script>

@@ -2,9 +2,9 @@
   <div :class="homeClass">
     <!-- <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-    <v-head :theme="theme" />
+    <v-head :theme="theme" :createCardFun="createCardFun" />
     <div class="list-cont">
-        <ListTem />
+      <ListTem :isShowShadowCont="isShowShadowCont" :closeCreateCardFun="closeCreateCardFun" />
     </div>
   </div>
 </template>
@@ -22,7 +22,9 @@ export default {
     ListTem
   },
   data() {
-    return {};
+    return {
+        isShowShadowCont:false,//是否展示弹窗
+    };
   },
   computed: {
     ...mapGetters({
@@ -34,7 +36,21 @@ export default {
         : "theme-dark home-cont";
     }
   },
-  mounted() {}
+  mounted() {
+      
+  },
+  methods:{
+      //新建弹窗
+      createCardFun(){
+          this.isShowShadowCont = true;
+      },
+      //取消弹窗
+      closeCreateCardFun(){
+          this.isShowShadowCont = false;
+      },
+    
+  }
+
 };
 </script>
 
@@ -45,16 +61,15 @@ export default {
   display: flex;
   flex-direction: column;
   &.theme-light {
-    background:rgba(246,246,248,1);
+    background: rgba(246, 246, 248, 1);
   }
   &.theme-dark {
-    background:rgba(26,26,26,1);
+    background: rgba(26, 26, 26, 1);
   }
-  .list-cont{
-      width: 100%;
-      position: relative;
-      flex: 1;
-      
+  .list-cont {
+    width: 100%;
+    position: relative;
+    flex: 1;
   }
 }
 </style>
