@@ -1,30 +1,5 @@
 <template>
   <el-container style="height: 60%; border: 0px solid #eee">
-<!--    <el-aside width="200px" style="background-color: rgb(238, 241, 246)">-->
-<!--    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">-->
-<!--      <el-radio-button :label="false">展开</el-radio-button>-->
-<!--      <el-radio-button :label="true">收起</el-radio-button>-->
-<!--    </el-radio-group>-->
-<!--      <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">-->
-<!--        <el-submenu index="1">-->
-<!--          <template slot="title">-->
-<!--            <i class="el-icon-document"></i>-->
-<!--            <span slot="title">文案管理</span>-->
-<!--          </template>-->
-<!--          <el-menu-item-group>-->
-<!--            <el-menu-item index="1-1"><i class="el-icon-document"></i>文案管理</el-menu-item>-->
-<!--          </el-menu-item-group>-->
-<!--        </el-submenu>-->
-<!--        <el-menu-item index="3">-->
-<!--          <i class="el-icon-user"></i>-->
-<!--          <span slot="title">用户管理</span>-->
-<!--        </el-menu-item>-->
-<!--        <el-menu-item index="4">-->
-<!--          <i class="el-icon-setting"></i>-->
-<!--          <span slot="title">系统设置</span>-->
-<!--        </el-menu-item>-->
-<!--      </el-menu>-->
-<!--    </el-aside>-->
 
     <el-container>
       <el-header style="background-color:#FFDEAD;text-align: center; font-size: 16px">
@@ -60,7 +35,6 @@
         <el-table
           ref="multipleTable"
           :data="tableData"
-
           stripe
           style="width: 100%"
           @selection-change="handleSelectionChange">
@@ -149,7 +123,7 @@
   export default {
     data() {
       const item = {
-      date: '2016-05-02',
+        date: '2016-05-02',
         name: '王小虎',
         address: '上海市普陀区金沙江路 1518 弄'
       };
@@ -162,23 +136,23 @@
           { label: "标签3" }
         ],
         form: {},
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }],
+        // tableData: [{
+        //   date: '2016-05-02',
+        //   name: '王小虎',
+        //   address: '上海市普陀区金沙江路 1518 弄'
+        // }, {
+        //   date: '2016-05-04',
+        //   name: '王小虎',
+        //   address: '上海市普陀区金沙江路 1517 弄'
+        // }, {
+        //   date: '2016-05-01',
+        //   name: '王小虎',
+        //   address: '上海市普陀区金沙江路 1519 弄'
+        // }, {
+        //   date: '2016-05-03',
+        //   name: '王小虎',
+        //   address: '上海市普陀区金沙江路 1516 弄'
+        // }],
         restaurants: [],
         state1: '',
         state2: ''
