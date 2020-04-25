@@ -119,36 +119,36 @@
   export default {
     data() {
       const item = {
-      date: '2016-05-02',
+        date: '2016-05-02',
         name: '王小虎',
         address: '上海市普陀区金沙江路 1518 弄'
       };
       return {
         isCollapse: true,
-        // tableData: Array(20).fill(item),
+        tableData: Array(20).fill(item),
         knowledge: [
           { label: "标签1" },
           { label: "标签2" },
           { label: "标签3" }
         ],
         form: {},
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }],
+        // tableData: [{
+        //   date: '2016-05-02',
+        //   name: '王小虎',
+        //   address: '上海市普陀区金沙江路 1518 弄'
+        // }, {
+        //   date: '2016-05-04',
+        //   name: '王小虎',
+        //   address: '上海市普陀区金沙江路 1517 弄'
+        // }, {
+        //   date: '2016-05-01',
+        //   name: '王小虎',
+        //   address: '上海市普陀区金沙江路 1519 弄'
+        // }, {
+        //   date: '2016-05-03',
+        //   name: '王小虎',
+        //   address: '上海市普陀区金沙江路 1516 弄'
+        // }],
         restaurants: [],
         state1: '',
         state2: ''
