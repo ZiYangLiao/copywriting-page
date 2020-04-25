@@ -123,8 +123,8 @@ export default {
     }
   }
   .headerBox {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin: 0 auto;
+	max-width: 1240px;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -174,6 +174,7 @@ export default {
       }
 
       .createBtn {
+        width: 2.1rem;
         color: white;
         background: rgba(229, 95, 47, 1);
         box-shadow: 0rem 0.02rem 0.06rem 0rem rgba(0, 0, 0, 0.1);
