@@ -428,7 +428,7 @@ export default {
 }
 @media screen and (max-width: 750px) {
     .cardList {
-        padding: 0 30px !important;
+        padding: 0 20px !important;
         justify-content: start !important;
     }
     .cardItem {

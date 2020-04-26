@@ -54,7 +54,7 @@ export default {
     data() {
         return {
             isShowInput: false, //搜索框是否展示
-            searchVal: "asdasd"
+            searchVal: ""
         };
     },
     methods: {
@@ -175,7 +175,7 @@ export default {
                 visibility: hidden;
                 padding: 0rem;
                 transition: width 0.2s;
-                min-height: 36px;
+                min-height: 30px;
                 &.isShowInput {
                     visibility: inherit;
 					width: 3rem;
@@ -193,6 +193,19 @@ export default {
             }
         }
     }
+}
+@media screen and (max-width: 750px) {
+    .searchBtn{
+		.iconfont{
+			font-size: 1rem;
+		}
+	}
+	.createBtn,.changeThemeBtn{
+		border-radius: 4px;
+		height: 30px !important;
+		min-height: 30px !important;
+		margin-left: 5px !important;
+	}
 }
 
 </style>
