@@ -62,7 +62,7 @@
 
 <script>
 import BScroll from "better-scroll"; //better scroll
-import { Message, Button } from "element-ui";
+import { Message } from "element-ui";
 export default {
     props: {
         isShowShadowCont: {
@@ -294,7 +294,7 @@ export default {
             // width: 5rem;
             // height: 3.6rem;
             width: 290px;
-            max-width: 290px;
+            // max-width: 290px;
             height: 196px;
             border-radius: 8px;
             background: chartreuse;
@@ -428,16 +428,17 @@ export default {
 }
 @media screen and (max-width: 750px) {
     .cardList {
-        padding: 0 20px !important;
-        justify-content: space-around !important;
+        padding: 0 30px !important;
+        justify-content: start !important;
     }
     .cardItem {
-        flex: 0 0 100%;
-
-        height: 180px !important;
+		flex: 0 0 100%;
+		margin-left: 0 !important;
+        height: 11rem !important;
     }
     .cardBox {
-        padding: 20px !important;
+		padding: 20px !important;
+		font-size: 1rem !important;
     }
 }
 @keyframes rubberBand {
