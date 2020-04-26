@@ -162,7 +162,8 @@ export default {
             .searchBtn {
                 width: 0.8rem;
                 height: 0.76rem;
-                display: flex;
+				display: flex;
+				margin-left: 5px;
                 align-items: center;
                 cursor: pointer;
                 justify-content: center;
@@ -179,7 +180,7 @@ export default {
                 &.isShowInput {
                     visibility: inherit;
 					width: 3rem;
-					min-width: 80px;
+					min-width: 110px;
                     padding: 0.2rem;
                 }
             }
@@ -197,7 +198,7 @@ export default {
 @media screen and (max-width: 750px) {
     .searchBtn{
 		.iconfont{
-			font-size: 1rem;
+			font-size: 1rem !important;
 		}
 	}
 	.createBtn,.changeThemeBtn{
