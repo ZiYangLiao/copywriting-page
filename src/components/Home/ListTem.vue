@@ -352,7 +352,9 @@ export default {
     }
     .shadowBox {
         width: 17.46rem;
-        height: 11.76rem;
+		height: 11.76rem;
+		max-width: 600px;
+		max-height: 405px;
         border-radius: 0.48rem;
         position: relative;
         overflow: hidden;
@@ -372,7 +374,7 @@ export default {
             justify-content: space-between;
             // align-items: center;
             text-align: left;
-            padding: 1.44rem;
+            padding: 0.44rem;
             flex-direction: column;
             box-sizing: border-box;
             color: white;
