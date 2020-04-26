@@ -28,6 +28,8 @@ li {
 .btn {
     min-width: 1.8rem;
     height: 0.76rem;
+    min-height: 36px;
+    min-width: 60px;
     border-radius: 0.12rem;
     outline: none;
     border: none;
@@ -63,4 +65,54 @@ li {
 
 .theme-dark .shadow-cont {
     background-color: rgba(0, 0, 0, 0.72);
+}
+
+
+.spinner-box {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+/* PULSE BUBBLES */
+
+.pulse-container {
+    width: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pulse-bubble {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #333;
+}
+
+.pulse-bubble-1 {
+    animation: pulse .4s ease 0s infinite alternate;
+}
+
+.pulse-bubble-2 {
+    animation: pulse .4s ease .2s infinite alternate;
+}
+
+.pulse-bubble-3 {
+    animation: pulse .4s ease .4s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: .25;
+        transform: scale(.75);
+    }
 }
