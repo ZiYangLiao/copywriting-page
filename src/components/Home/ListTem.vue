@@ -197,6 +197,7 @@ export default {
             this.isGetState = true;
             setTimeout(() => {
                 if (this.pageNum >= 10) {
+					this.isGetState = false;
                     return alert("没有更多了");
                 }
                 this.list = this.list.concat(this.dataList);
