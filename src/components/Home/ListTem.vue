@@ -5,7 +5,7 @@
                 <ul class="cardList">
                     <li class="cardItem" v-for="(item,index) in list" :key="index">
                         <img
-                            src="https://zt.msstatic.com/zt/img/20/02/04/158078263814850075485.jpg"
+                            :src="item.img"
                             alt
                         />
                         <div class="cardBox">
@@ -29,7 +29,7 @@
         <!-- 弹窗容器 -->
         <div class="shadow-cont" @click="closeCardFun" v-show="isShowShadowCont">
             <div class="shadowBox" @click.stop :class="{'rubberBand':isShowShadowCont}">
-                <img src="https://zt.msstatic.com/zt/img/20/02/04/158078263814850075485.jpg" alt />
+                <img :src="currentItem.img" alt />
                 <div class="cardBox">
                     <div class="cardText">
                         <textarea
@@ -62,6 +62,8 @@
 
 <script>
 import BScroll from "better-scroll"; //better scroll
+
+import { Tuzki } from "@jsUrl/common.js";
 import { Message } from "element-ui";
 export default {
     props: {
@@ -75,6 +77,13 @@ export default {
             required: true
         }
     },
+    computed:{
+        randowImg(){
+            let imgUrl = '';
+            imgUrl = Tuzki.getImgUrl();
+            return imgUrl;
+        }
+    },
     data() {
         return {
             pageNum: 1,
@@ -82,6 +91,7 @@ export default {
             //   isShowShadowCont: false, //是否展示弹窗
             currentItem: {
                 id: 1,
+                img:Tuzki.getImgUrl(),
                 text: "",
                 tickText: "",
                 tick: { text: [], color: "#F7B500" }
@@ -153,6 +163,9 @@ export default {
         };
     },
     mounted() {
+        this.list.map(item => {
+            item.img = Tuzki.getImgUrl();
+        })
         this.dataList = this.list.concat();
         this.list = this.list.concat(this.dataList);
         this.$nextTick(() => {
@@ -215,7 +228,8 @@ export default {
         closeCardFun() {
             this.currentItem.text = "";
 			this.currentItem.tickText = "";
-			this.currentItem.tick.color = this.getColor();
+            this.currentItem.img = Tuzki.getImgUrl();
+			this.currentItem.tick.color = Tuzki.getColor();
 			console.log(this.currentItem.tick.color)
             this.closeCreateCardFun();
 		},

@@ -39,6 +39,8 @@ module.exports = {
 		config.resolve.alias
 				.set('@', resolve('src'))
 				.set('@cssUrl', resolve('src/assets/css'))
+				.set('@jsUrl', resolve('src/assets/js'))
+				.set('@imgUrl', resolve('src/assets/img'))
 				
 	},
 	// 生产环境 sourceMap
