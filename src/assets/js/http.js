@@ -37,7 +37,7 @@ http.interceptors.response.use(function (response) {
 	} catch (error){
 		// console.log(error)
 	}
-	response.isResultTrue = response.isResultTrue || response.resultTrue
+	// response.isResultTrue = response.isResultTrue || response.resultTrue
 	return response.data;
 	}, (error) => {
 	return Promise.reject(error);

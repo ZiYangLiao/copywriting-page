@@ -4,7 +4,7 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/>-->
     <v-head :theme="theme" :createCardFun="createCardFun" />
     <div class="list-cont">
-      <ListTem :isShowShadowCont="isShowShadowCont" :closeCreateCardFun="closeCreateCardFun" />
+      <ListTem :isShowShadowCont="isShowShadowCont" :closeCreateCardFun="closeCreateCardFun" :page="page" />
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@ export default {
   data() {
     return {
         isShowShadowCont:false,//是否展示弹窗
+        page:1
     };
   },
   computed: {

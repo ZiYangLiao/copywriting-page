@@ -86,7 +86,7 @@ export default {
         searchInputSubmitFun() {
             let val = this.searchVal;
             if (val.length > 0) {
-                alert(this.searchVal);
+                this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:1}).then(() => {})
             } else {
                 alert("请输入内容");
                 // this.$refs.searchInput.focus();

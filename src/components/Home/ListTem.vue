@@ -75,6 +75,10 @@ export default {
         closeCreateCardFun: {
             type: Function,
             required: true
+        },
+        page:{
+            type: Number,
+            default:1
         }
     },
     computed:{
@@ -210,7 +214,8 @@ export default {
             if (this.isGetState) return;
             this.isGetState = true;
             setTimeout(() => {
-                if (this.pageNum >= 10) {
+                if (this.pageNum >= this.totalPage) {
+                    this.pageNum = this.totalPage;
 					this.isGetState = false;
                     return alert("没有更多了");
                 }
@@ -219,10 +224,10 @@ export default {
                 this.isGetState = false;
             }, 500);
         },
-        getListAjaxFun(){
+        getListAjaxFun(val='', page=1){
             //获取历史消息
-			this.$store.dispatch('homeFun/loadList',{content:''}).then(() => {
-                console.log('加载完成')
+			this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:page}).then((res) => {
+                this.totalPage = Math.ceil(res.total/res.pageSize);
 			})
 
         },
