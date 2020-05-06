@@ -3,8 +3,6 @@ const imgList = [];
 for (let i = 0; i < 80; i++) {
     imgList[i] = require(`@imgUrl/${(i+1)}.png`);
 }
-console.log(imgList);
-
 export const Tuzki = {
     // 返回随机颜色
     getColor() {

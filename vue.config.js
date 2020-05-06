@@ -5,7 +5,8 @@ function resolve (dir) {
 }
 // 项目的主要配置文件
 
-const target =  'http://192.168.4.187/'
+// const target =  'http://120.24.43.178:8000/wenan/content/'
+const target =  'https://www.wenan.life/'
 module.exports = {
 	// webpack 配置进行更细粒度的修改  https://cli.vuejs.org/zh/config/#chainwebpack
 	publicPath: './',
@@ -22,7 +23,7 @@ module.exports = {
 		https: false,
 		hotOnly: false,
 		proxy: {
-			'/wxLoginUserInfo': {
+			'/wenan/content/key/search/list': {
 				target: target,
 				changeOrigin: true,
 				ws: true,

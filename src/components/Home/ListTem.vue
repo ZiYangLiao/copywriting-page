@@ -163,6 +163,7 @@ export default {
         };
     },
     mounted() {
+        this.getListAjaxFun()
         this.list.map(item => {
             item.img = Tuzki.getImgUrl();
         })
@@ -217,6 +218,13 @@ export default {
                 this.pageNum += 1;
                 this.isGetState = false;
             }, 500);
+        },
+        getListAjaxFun(){
+            //获取历史消息
+			this.$store.dispatch('homeFun/loadList',{content:''}).then(() => {
+                console.log('加载完成')
+			})
+
         },
         //卡片点击事件
         cardItemClickFun(i) {
