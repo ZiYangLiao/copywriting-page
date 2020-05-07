@@ -3,15 +3,15 @@
         <div class="wrapper" ref="wrapper">
             <div class="content">
                 <ul class="cardList">
-                    <li class="cardItem" v-for="(item,index) in list" :key="index">
+                    <li class="cardItem" v-for="(item,index) in homeList" :key="index">
                         <img
-                            :src="item.img"
+                            :src="item.imageUrl"
                             alt
                         />
                         <div class="cardBox">
-                            <div class="cardText">{{item.text}}</div>
-                            <div class="cardTickBox" :style="{'color':item.tick.color}">
-                                <span v-for="tick in item.tick.text" :key="tick">#{{tick}}</span>
+                            <div class="cardText">{{item.content}}</div>
+                            <div class="cardTickBox" :style="{'color':item.color}">
+                                <span v-for="tick in item.labelBeanList" :key="tick.labelName">#{{tick.labelName}} </span>
                             </div>
                         </div>
                     </li>
@@ -29,21 +29,20 @@
         <!-- 弹窗容器 -->
         <div class="shadow-cont" @click="closeCardFun" v-show="isShowShadowCont">
             <div class="shadowBox" @click.stop :class="{'rubberBand':isShowShadowCont}">
-                <img :src="currentItem.img" alt />
+                <img :src="currentItem.imageUrl" alt />
                 <div class="cardBox">
                     <div class="cardText">
                         <textarea
                             type="text"
-                            v-model.trim="currentItem.text"
+                            v-model.trim="currentItem.content"
                             placeholder="在这里分享你的想法"
                             maxlength="50"
                         ></textarea>
                     </div>
-                    <div class="cardTickBox" :style="{'color':currentItem.tick.color}">
-                        <!-- <span v-for="tick in currentItem.tick.text" :key="tick">#{{tick}}</span> -->
+                    <div class="cardTickBox" :style="{'color':currentItem.color}">
                         <input
                             type="text"
-                            v-model.trim="currentItem.tickText"
+                            v-model.trim="currentItem.label"
                             maxlength="20"
                             placeholder="想法标签(多个用 '#' 分隔)"
                         />
@@ -52,7 +51,7 @@
             </div>
             <div class="handleBtnBox">
 				<el-button class="popBtn" @click.stop="closeCardFun" plain>取消</el-button>
-				<el-button class="popBtn" type="primary"  @click.stop="closeCardFun" plain>确认</el-button>
+				<el-button class="popBtn" type="primary"  @click.stop="createCardFun" plain>确认</el-button>
                 <!-- <button class="btn popBtn" @click.stop="closeCardFun">取消</button> -->
                 <!-- <button class="btn popBtn" @click.stop="createCardFun">确认</button> -->
             </div>
@@ -64,7 +63,9 @@
 import BScroll from "better-scroll"; //better scroll
 
 import { Tuzki } from "@jsUrl/common.js";
-import { Message } from "element-ui";
+import { Message, Loading } from "element-ui";
+import { mapGetters } from 'vuex';
+
 export default {
     props: {
         isShowShadowCont: {
@@ -75,13 +76,15 @@ export default {
         closeCreateCardFun: {
             type: Function,
             required: true
-        },
-        page:{
-            type: Number,
-            default:1
         }
     },
     computed:{
+        ...mapGetters({
+            pageNumber:'pageNumber',
+            totalPage:'totalPage',
+            searchVal:'searchVal',
+            homeList:'homeList'
+        }),
         randowImg(){
             let imgUrl = '';
             imgUrl = Tuzki.getImgUrl();
@@ -94,85 +97,17 @@ export default {
             isGetState: false, //是否加载数据中
             //   isShowShadowCont: false, //是否展示弹窗
             currentItem: {
-                id: 1,
-                img:Tuzki.getImgUrl(),
-                text: "",
-                tickText: "",
-                tick: { text: [], color: "#F7B500" }
+                imageUrl:Tuzki.getImgUrl(),
+                color:Tuzki.getColor(),
+                content: "",
+                label: "",
+                labelBeanList: []
             },
-            list: [
-                {
-                    id: 1,
-                    text: "你自己觉得有，别人感觉不到你有，你就是没有",
-                    tick: { text: ["爱好"], color: "#F7B500" }
-                },
-                {
-                    id: 1,
-                    text: "心要大，脚要实",
-                    tick: { text: ["心里话"], color: "#44D7B6" }
-                },
-                {
-                    id: 1,
-                    text: "改变别人之前，先改变自己",
-                    tick: { text: ["奋斗"], color: "#0091FF" }
-                },
-                {
-                    id: 1,
-                    text:
-                        "你刚来可以抱怨你的手下是一群混蛋，但是如果过了一年你还在抱怨，那么你才是一个真正的混蛋",
-                    tick: { text: ["职场"], color: "#6DD400" }
-                },
-                {
-                    id: 1,
-                    text: "把你手头的工作当作吃饭来对待，你一定可以做好",
-                    tick: { text: ["认真"], color: "#32C5FF" }
-                },
-                {
-                    id: 1,
-                    text: "快乐工作，认真生活",
-                    tick: { text: ["态度"], color: "#FA6400" }
-                },
-                {
-                    id: 1,
-                    text: "你自己觉得有，别人感觉不到你有，你就是没有",
-                    tick: { text: ["爱好"], color: "#F7B500" }
-                },
-                {
-                    id: 1,
-                    text: "心要大，脚要实",
-                    tick: { text: ["心里话"], color: "#44D7B6" }
-                },
-                {
-                    id: 1,
-                    text: "改变别人之前，先改变自己",
-                    tick: { text: ["奋斗"], color: "#0091FF" }
-                },
-                // {
-                //     id: 1,
-                //     text:
-                //         "你刚来可以抱怨你的手下是一群混蛋，但是如果过了一年你还在抱怨，那么你才是一个真正的混蛋",
-                //     tick: { text: ["职场"], color: "#6DD400" }
-                // },
-                // {
-                //     id: 1,
-                //     text: "把你手头的工作当作吃饭来对待，你一定可以做好",
-                //     tick: { text: ["认真"], color: "#32C5FF" }
-                // },
-                {
-                    id: 1,
-                    text: "快乐工作，认真生活",
-                    tick: { text: ["态度"], color: "#FA6400" }
-                }
-            ]
         };
     },
     mounted() {
+        //或去默认数据
         this.getListAjaxFun()
-        this.list.map(item => {
-            item.img = Tuzki.getImgUrl();
-        })
-        this.dataList = this.list.concat();
-        this.list = this.list.concat(this.dataList);
         this.$nextTick(() => {
             //$refs绑定元素
             if (!this.scroll) {
@@ -213,67 +148,93 @@ export default {
         getListDataFun() {
             if (this.isGetState) return;
             this.isGetState = true;
-            setTimeout(() => {
-                if (this.pageNum >= this.totalPage) {
-                    this.pageNum = this.totalPage;
-					this.isGetState = false;
-                    return alert("没有更多了");
-                }
-                this.list = this.list.concat(this.dataList);
-                this.pageNum += 1;
+            console.log(this.pageNumber,'pageNumber')
+            console.log(this.totalPage,'totalPage')
+            console.log(this.totalPage === this.pageNumber)
+            let pageNumber = this.pageNumber;
+            if (this.pageNumber >= this.totalPage) {
+                pageNumber = this.totalPage;
                 this.isGetState = false;
-            }, 500);
+                return  Message({
+                        message: "没有更多了",
+                        type: "info"
+                    });
+            }
+            pageNumber += 1;
+            this.getListAjaxFun(this.searchVal, pageNumber);
+            this.isGetState = false;
         },
-        getListAjaxFun(val='', page=1){
+        getListAjaxFun(val='', page=0){
             //获取历史消息
-			this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:page}).then((res) => {
-                this.totalPage = Math.ceil(res.total/res.pageSize);
+			this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:page}).then(() => {
 			})
 
         },
         //卡片点击事件
         cardItemClickFun(i) {
-            console.log(i);
             this.currentItem = this.list[i];
             //   this.showShadowContFun();
 		},
 		//关闭
         closeCardFun() {
-            this.currentItem.text = "";
-			this.currentItem.tickText = "";
-            this.currentItem.img = Tuzki.getImgUrl();
-			this.currentItem.tick.color = Tuzki.getColor();
-			console.log(this.currentItem.tick.color)
+            this.currentItem.content = "";
+			this.currentItem.label = "";
+            this.currentItem.imageUrl = Tuzki.getImgUrl();
+			this.currentItem.color = Tuzki.getColor();
             this.closeCreateCardFun();
 		},
 		//添加弹窗
         createCardFun() {
-            if (this.currentItem.text.length === 0) {
+            if (this.currentItem.content.length === 0) {
                 return Message({
                     message: "请输入想要分享的内容",
                     type: "error"
                 });
             }
-            if (this.currentItem.tickText.length === 0) {
+            if (this.currentItem.label.length === 0) {
                 return Message({
                     message: "请输入想要分享的内容标签",
                     type: "error"
                 });
             }
-
-            if (this.currentItem.tickText.indexOf("#") === 0) {
-                this.currentItem.tickText = this.currentItem.tickText.slice(1);
+            let label = this.currentItem.label;
+            let labelBeanList = [];
+            if (this.currentItem.label.indexOf("#") === 0) {
+                label = this.currentItem.label.slice(1);
+            }else{
+                this.currentItem.label = '#'+this.currentItem.label;
             }
+            label.split("#").forEach(item=>{
+                labelBeanList.push({
+                    labelName:item
+                })
+            })
+
             let obj = {
-                id: "adasdas",
-                text: this.currentItem.text,
-                tick: {
-                    text: this.currentItem.tickText.split("#"),
-                    color: this.currentItem.tick.color 
-                }
+                content: this.currentItem.content,
+                label:this.currentItem.label,
+                labelBeanList:labelBeanList,
+                color:this.currentItem.color,
+                imageUrl:this.currentItem.imageUrl
             };
-            this.list.unshift(obj);
-            this.closeCardFun();
+            let loading = Loading.service({ fullscreen: true });
+
+            this.$store.dispatch('homeFun/addItem', obj).then(()=>{
+                loading.close();
+                this.closeCardFun();
+                Message({
+                    message:'创建成功',
+                    type: "success"
+                });
+            }).catch((err)=>{
+                loading.close();
+                this.closeCardFun();
+                Message({
+                    message: err || '创建失败',
+                    type: "error"
+                });
+            })
+            
         },
         // 获取随机色
         getColor() {

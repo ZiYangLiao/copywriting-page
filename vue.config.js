@@ -31,6 +31,14 @@ module.exports = {
 					'^/api': '',
 				}
 			},
+			'/wenan/content/add': {
+				target: target,
+				changeOrigin: true,
+				ws: true,
+				pathRewrite: {
+					'^/api': '',
+				}
+			}
 		},
 		before: () => {
 		},

@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { Message } from "element-ui";
 export default {
     name: "Head",
     props: {
@@ -85,12 +86,16 @@ export default {
         //搜索框回车事件
         searchInputSubmitFun() {
             let val = this.searchVal;
-            if (val.length > 0) {
-                this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:1}).then(() => {})
-            } else {
-                alert("请输入内容");
-                // this.$refs.searchInput.focus();
-            }
+            this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:0}).then(() => {})
+
+            // if (val.length > 0) {
+            //     this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:0}).then(() => {})
+            // } else {
+            //      Message({
+            //         message: "请输入内容",
+            //         type: "err"
+            //     });
+            // }
         }
     }
 };
