@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { Message } from "element-ui";
+// import { Message } from "element-ui";
 export default {
     name: "Head",
     props: {
@@ -87,7 +87,6 @@ export default {
         searchInputSubmitFun() {
             let val = this.searchVal;
             this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:0}).then(() => {})
-
             // if (val.length > 0) {
             //     this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:0}).then(() => {})
             // } else {
