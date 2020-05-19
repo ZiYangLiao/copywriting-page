@@ -29,14 +29,14 @@ export default {
     position: relative;
     width: 100%;
     height: auto;
-    padding: 20px 0;
+    padding: 0.3rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: rgba(51, 51, 51, 0.98);
-    line-height: 24px;
-    font-size: 14px;
+    line-height: 0.6rem;
+    font-size: 0.3rem;
     color: #999999;
     .footerDetail{
         cursor: pointer;
