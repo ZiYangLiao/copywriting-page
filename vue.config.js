@@ -19,7 +19,7 @@ module.exports = {
 		disableHostCheck: false,
 		open: true,
 		// host: 'localhost',
-		port: 3000,   
+		port: 80,   
 		https: false,
 		hotOnly: false,
 		proxy: {
