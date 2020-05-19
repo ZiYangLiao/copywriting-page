@@ -148,13 +148,16 @@ export default {
         getListDataFun() {
             if (this.isGetState) return;
             this.isGetState = true;
-            console.log(this.pageNumber,'pageNumber')
-            console.log(this.totalPage,'totalPage')
-            console.log(this.totalPage === this.pageNumber)
+            // console.log(this.pageNumber,'pageNumber')
+            // console.log(this.totalPage,'totalPage')
+            // console.log(this.totalPage === this.pageNumber)
+            
             let pageNumber = this.pageNumber;
             if (this.pageNumber >= this.totalPage) {
                 pageNumber = this.totalPage;
-                this.isGetState = false;
+                setTimeout(() => {
+                    this.isGetState = false;
+                }, 2000);
                 return  Message({
                         message: "没有更多了",
                         type: "info"
