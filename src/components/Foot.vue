@@ -16,9 +16,9 @@ export default {
             cpNumber: "蜀ICP备20012813号"
         };
     },
-    methods:{
-        cpClick(){
-            window.open('http://beian.miit.gov.cn')
+    methods: {
+        cpClick() {
+            window.open("http://beian.miit.gov.cn");
         }
     }
 };
@@ -29,17 +29,19 @@ export default {
     position: relative;
     width: 100%;
     height: auto;
-    padding: 0.3rem 0;
+    padding: 10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: rgba(51, 51, 51, 0.98);
-    line-height: 0.6rem;
-    font-size: 0.3rem;
-    color: #999999;
-    .footerDetail{
+    font-size: 0;
+    .footerDetail {
         cursor: pointer;
+        line-height: 20px;
+        font-size: 14px;
+        color: #999999;
+        margin: 0;
     }
 }
 </style>

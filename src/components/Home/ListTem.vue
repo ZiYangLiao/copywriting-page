@@ -115,6 +115,7 @@ export default {
                     probeType: 2,
                     tap: true,
                     click: true,
+                    preventDefault:false,//不禁用默认事件
                     scrollX: false,
                     mouseWheel: true
                 });
