@@ -55,7 +55,7 @@ const actions = {
 				resolve(true)
 			})
 		})
-	},
+	}, 
 	//加载list数据
 	loadList: ({ state, commit }, data) => {
 		return new Promise((resolve, reject) => {

@@ -79,7 +79,7 @@ export default {
         }
     },
     computed:{
-        ...mapGetters({
+        ...mapGetters({//get 
             pageNumber:'pageNumber',
             totalPage:'totalPage',
             searchVal:'searchVal',
@@ -166,9 +166,7 @@ export default {
         },
         getListAjaxFun(val='', page=0){
             //获取历史消息
-			this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:page}).then(() => {
-			})
-
+			this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:page}).then(() => {})
         },
         //卡片点击事件
         cardItemClickFun(i) {
