@@ -36,7 +36,7 @@
                             type="text"
                             v-model.trim="currentItem.content"
                             placeholder="在这里分享你的想法"
-                            maxlength="50"
+                            maxlength="80"
                         ></textarea>
                     </div>
                     <div class="cardTickBox" :style="{'color':currentItem.color}">
