@@ -6,6 +6,7 @@
     <div class="list-cont">
       <ListTem :isShowShadowCont="isShowShadowCont" :closeCreateCardFun="closeCreateCardFun" :page="page" />
     </div>
+    <Foot />
   </div>
 </template>
 
@@ -14,12 +15,14 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 import Head from "@/components/Home/Head.vue";
 import ListTem from "@/components/Home/ListTem.vue";
+import Foot from '@/components/Foot'
 import { mapGetters } from "vuex";
 export default {
   name: "Home",
   components: {
     "v-head": Head,
-    ListTem
+    ListTem,
+    Foot
   },
   data() {
     return {

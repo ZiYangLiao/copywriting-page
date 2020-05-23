@@ -29,21 +29,23 @@ const mutations = {
 			list.map(item => {
 				state.homeList.push(item)
 			})
+		} else {
+			state.homeList.unshift(list)
 		}
 	}
 }
 
 const actions = {
 	// 添加文案数据
-	addItem: ({commit }, data) => {
+	addItem: ({ commit }, data) => {
 		console.log(data)
 		return new Promise((resolve, reject) => {
 			$http({
 				url: '/wenan/content/add',
 				type: 'post',
-				data:{
-					content:data.content,
-					label:data.label
+				data: {
+					content: data.content,
+					label: data.label
 				},
 			}).then(res => {
 				console.log(res, '添加数据')
@@ -51,7 +53,7 @@ const actions = {
 					reject(new Error('添加数据失败'))
 					return
 				}
-				commit('PUSH_LIST',[data])
+				commit('PUSH_LIST', data)
 				resolve(true)
 			})
 		})
@@ -85,7 +87,7 @@ const actions = {
 					item.color = item.color || Tuzki.getColor();
 					item.imageUrl = item.imageUrl || Tuzki.getImgUrl();
 				})
-				if(res.data.pageNumber === 0 ){
+				if (res.data.pageNumber === 0) {
 					commit('RESET_LIST')
 				}
 				commit('SET_SEARCHVAL', data.content);

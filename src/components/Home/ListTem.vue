@@ -79,7 +79,7 @@ export default {
         }
     },
     computed:{
-        ...mapGetters({
+        ...mapGetters({//get 
             pageNumber:'pageNumber',
             totalPage:'totalPage',
             searchVal:'searchVal',
@@ -115,6 +115,7 @@ export default {
                     probeType: 2,
                     tap: true,
                     click: true,
+                    preventDefault:false,//不禁用默认事件
                     scrollX: false,
                     mouseWheel: true
                 });
@@ -148,13 +149,16 @@ export default {
         getListDataFun() {
             if (this.isGetState) return;
             this.isGetState = true;
-            console.log(this.pageNumber,'pageNumber')
-            console.log(this.totalPage,'totalPage')
-            console.log(this.totalPage === this.pageNumber)
+            // console.log(this.pageNumber,'pageNumber')
+            // console.log(this.totalPage,'totalPage')
+            // console.log(this.totalPage === this.pageNumber)
+            
             let pageNumber = this.pageNumber;
             if (this.pageNumber >= this.totalPage) {
                 pageNumber = this.totalPage;
-                this.isGetState = false;
+                setTimeout(() => {
+                    this.isGetState = false;
+                }, 2000);
                 return  Message({
                         message: "没有更多了",
                         type: "info"
@@ -166,9 +170,7 @@ export default {
         },
         getListAjaxFun(val='', page=0){
             //获取历史消息
-			this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:page}).then(() => {
-			})
-
+			this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:page}).then(() => {})
         },
         //卡片点击事件
         cardItemClickFun(i) {

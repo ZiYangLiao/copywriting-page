@@ -2,7 +2,9 @@
     <div :class="headClass">
         <div class="headerBox">
             <div class="logoBox">
-                <div class="logo"></div>
+                <div class="logo">
+                    <img :src="logoImg" alt="">
+                </div>
             </div>
             <div class="handleBox">
                 <input
@@ -32,7 +34,7 @@
 </template>
 
 <script>
-import { Message } from "element-ui";
+// import { Message } from "element-ui";
 export default {
     name: "Head",
     props: {
@@ -50,7 +52,14 @@ export default {
             return this.theme === "light"
                 ? "theme-light head-cont"
                 : "theme-dark head-cont";
-        }
+        },
+        logoImg() {
+            let img = this.theme === "light"
+                ? require('@/assets/logo-1.png')
+                : require('@/assets/logo-2.png');
+                console.log(img)
+            return img
+        }   
     },
     data() {
         return {
@@ -87,7 +96,6 @@ export default {
         searchInputSubmitFun() {
             let val = this.searchVal;
             this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:0}).then(() => {})
-
             // if (val.length > 0) {
             //     this.$store.dispatch('homeFun/loadList',{content:val,pageNumber:0}).then(() => {})
             // } else {
@@ -154,6 +162,14 @@ export default {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            .logo{
+                width: 100%;
+                height: 100%;
+                img{
+                    width: auto;
+                    height: 100%;
+                }
+            }
         }
         .handleBox {
             width: auto;
