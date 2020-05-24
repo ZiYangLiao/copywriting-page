@@ -109,13 +109,14 @@ export default {
         //或去默认数据
         this.getListAjaxFun()
         this.$nextTick(() => {
+            let clientW = document.body.clientWidth;
             //$refs绑定元素
             if (!this.scroll) {
                 this.scroll = new BScroll(this.$refs.wrapper, {
                     probeType: 2,
                     tap: true,
                     click: true,
-                    preventDefault:false,//不禁用默认事件
+                    preventDefault:clientW >=750 ? false : true,//不禁用默认事件
                     scrollX: false,
                     mouseWheel: true
                 });
@@ -123,14 +124,14 @@ export default {
                     // 滚动到底部
                     if (this.scroll.y <= this.scroll.maxScrollY + 50) {
                         // console.log(this.scroll.y);
-                        // this.getListDataFun();
+                        this.getListDataFun();
                     }
                 });
                 this.scroll.on("touchend", pos => {
                     // 下拉动作
                     if (pos.y > 50) {
                         // console.log(pos.y);
-                        this.getListDataFun();
+                        // this.getListDataFun();
                     }
                 });
                 setTimeout(() => {
@@ -142,6 +143,7 @@ export default {
             } else {
                 this.scroll.refresh();
             }
+           
         });
     },
     methods: {

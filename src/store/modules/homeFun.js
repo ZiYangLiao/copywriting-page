@@ -66,7 +66,7 @@ const actions = {
 				url: '/wenan/content/key/search/list',
 				type: 'get',
 				data: {
-					content: data.content || state.searchVal,
+					content: data.content,
 					pageSize: data.pageSize || state.pageSize,
 					pageNumber: data.pageNumber || state.pageNumber,
 				},

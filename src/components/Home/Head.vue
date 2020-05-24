@@ -35,6 +35,7 @@
 
 <script>
 // import { Message } from "element-ui";
+// import {mapGetters} from 'vuex'
 export default {
     name: "Head",
     props: {
@@ -59,7 +60,10 @@ export default {
                 : require('@/assets/logo-2.png');
                 console.log(img)
             return img
-        }   
+        },
+        // ...mapGetters({
+        //     searchVal: 'searchVal'
+        // })   
     },
     data() {
         return {
